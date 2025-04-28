@@ -1,0 +1,505 @@
+// ==========================================================================
+// Rapportmall SCSS - Quarto Tema
+// Fokus: Läsbarhet (IBM Plex), Grön Dualitet, Luftighet, Hög Kontrast
+// Version: 2.3 (Förbättrad Kontrast & Läsbarhet)
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Steg 1: Importera Nödvändiga Typsnitt
+// --------------------------------------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap'); // Poppins Bold (700)
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap'); // IBM Plex Sans Regular, Medium, SemiBold
+// @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); // Avkommentera om du använder IBM Plex Mono för kod
+
+/*-- scss:defaults --*/
+
+// --------------------------------------------------------------------------
+// Steg 2: Definiera Färgpalett (Oförändrad)
+// --------------------------------------------------------------------------
+
+// Gröna nyanser
+$green-g1: #004232; // Mörkaste Grön (Primär/Rubriker)
+$green-g2: #20AC6C; // Mellangrön (Accenter/Hover)
+$green-g3: #82CD9E;
+$green-g4: #D8E69C;
+$green-g5: #E5F2E5; // *** NY LJUSGRÖN BAKGRUND ***
+
+// Blå nyanser
+$blue-b1: #00495D; // Mörk Blå
+$blue-b2: #28B2C5;
+$blue-b3: #A3D8E7;
+$blue-b4: #E6F4F7; // Alternativ ljusblå bakgrund
+
+// Komplement & Neutrala
+$comp-k1: #ED6A55;
+$comp-k2: #F29385;
+$comp-k3: #FDC75F;
+$comp-k4: #FDE5DE;
+$comp-k5: #F8EEDC;
+$comp-k6: #FFFFDE;
+$comp-k7: #F6F5F4; // Tidigare bakgrund (nästan vit)
+
+// Neutrala
+$black: #000000;
+$gray-dark: #000000; // *** NY PRIMÄR TEXTFÄRG FÖR BÄTTRE KONTRAST/MJUKHET ***
+$gray-medium: #adb5bd;
+$gray-light: #dee2e6;
+$white: #FFFFFF;
+
+// --------------------------------------------------------------------------
+// Steg 3: Semantisk Mappning av Färger (Uppdaterad)
+// --------------------------------------------------------------------------
+
+$primary:       $green-g1;
+$secondary:     $green-g2;
+$success:       $green-g2;
+$info:          $blue-b2;
+$warning:       $comp-k3;
+$danger:        $comp-k1;
+$light:         $comp-k7; // Behålls för ev. ljusa element, men inte som huvudbakgrund
+$dark:          $blue-b1;
+
+// *** UPPDATERADE BAKGRUNDS- OCH TEXTFÄRGER FÖR HÖG KONTRAST ***
+$body-bg:       $green-g5;    // Ny, svagt grön bakgrund för kontrast mot vitt
+$body-color:    $gray-dark;   // Mörkgrå text för hög kontrast och behaglig läsning
+$body-secondary: scale-color($green-g1, $lightness: 0%); // Ljusare grå för sekundär text
+$headings-color:$primary;     // Mörkgrön (hög kontrast mot $green-g5)
+$link-color:    $primary;
+$link-hover-color: $secondary;
+
+$bg-accent-color: $white; // Används för t.ex. kodblocksbakgrund, poppar mot $green-g5
+$border-color:  $gray-medium;
+$border-color-translucent: rgba($black, 0.1); // Något ljusare än tidigare
+
+// --------------------------------------------------------------------------
+// Steg 4: Typsnittsinställningar (Oförändrad grund, justeringar nedan)
+// --------------------------------------------------------------------------
+
+$font-family-sans-serif:      'IBM Plex Sans', sans-serif;
+$font-family-base:            $font-family-sans-serif;
+$headings-font-family:        'Poppins', sans-serif;
+$headings-font-weight:        700;
+$font-weight-base:            400;
+$font-size-base:              1rem; // Ca 16px, bra standard för läsbarhet
+$line-height-base:            1.7;  // Generöst radavstånd, bra för läsning
+$paragraph-margin-bottom:     1.25rem; // Bra avstånd mellan stycken
+
+// Rubrikstorlekar (behålls, bra skala)
+$h1-font-size:                $font-size-base * 2.8;
+$h2-font-size:                $font-size-base * 2.2;
+$h3-font-size:                $font-size-base * 1.9;
+$h4-font-size:                $font-size-base * 1.6;
+$h5-font-size:                $font-size-base * 1.35;
+$h6-font-size:                $font-size-base * 1.1;
+
+// --------------------------------------------------------------------------
+// Steg 5: Layout & Globala Inställningar (Oförändrad)
+// --------------------------------------------------------------------------
+
+$focus-ring-width:      .2rem;
+$focus-ring-opacity:    .5;
+$focus-ring-color:      rgba($secondary, $focus-ring-opacity);
+
+/*-- scss:rules --*/
+
+// --------------------------------------------------------------------------
+// Steg 6: Anpassade CSS-regler (Uppdaterade)
+// --------------------------------------------------------------------------
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// *** FÖRBÄTTRAD SPATIËRING FÖR RUBRIKER ***
+// Mer luft ovanför för separation, mindre under för koppling till text.
+h1, .h1 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+h2, .h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.85rem;
+}
+h3, .h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+h4, .h4 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+}
+h5, .h5 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+h6, .h6 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+// *** FAST MAXBREDD FÖR LÖPTEXT (600PX) ***
+// Säkerställer optimal radlängd för läsbarhet på alla skärmar.
+.quarto-body-content > .col-body {
+  max-width: 600px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  // Säkerställ att vi centrerar innehållet korrekt
+  float: none !important;
+}
+
+// Anpassning för att standard Quarto-layouten ska fungera med fixerad bredd
+// Detta kan behöva justeras beroende på din specifika Quarto-version och tema-inställningar
+@media (min-width: 992px) { // Anpassa breakpoint om nödvändigt
+  .body-content {
+    // Om .col-body är direkt under .body-content, kan detta hjälpa centrering
+     display: flex;
+     justify-content: center;
+  }
+}
+
+// Säkerställ att bredare element inom .col-body inte spränger layouten
+// Denna regel appliceras nu mer specifikt på element inom .col-body
+.quarto-body-content > .col-body > figure,
+.quarto-body-content > .col-body > .table-responsive,
+.quarto-body-content > .col-body > .quarto-figure,
+.quarto-body-content > .col-body > div[class*="cell-output"] pre,
+.quarto-body-content > .col-body > p > img { // Lägg till img direkt i p också
+  max-width: 100%; // Se till att de skalar inom 600px-containern
+  height: auto; // Behåll proportioner för bilder
+  display: block; // Förhindra extra utrymme under bilder
+  margin-left: auto; // Centrera om de är smalare än 600px
+  margin-right: auto;
+}
+
+// Behåll bra marginal för paragrafer
+p {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+ul, ol {
+  margin-bottom: $paragraph-margin-bottom; // Konsekvent avstånd efter listor
+  padding-left: 1.8rem; // Lite mer indrag för tydlighet
+}
+
+li {
+  margin-bottom: 0.6rem; // Lite mer luft mellan listelement
+}
+
+// Styling för kodblock
+pre {
+  // font-family: 'IBM Plex Mono', monospace; // Använd om importerad
+  font-family: monospace; // Fallback
+  background-color: $bg-accent-color; // Vit bakgrund, poppar mot $green-g5
+  border: 1px solid $gray-light;
+  border-radius: 4px;
+  padding: 1em 1.2em; // Lite mer padding
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: $paragraph-margin-bottom; // Konsekvent avstånd efter kodblock
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); // Subtil skugga för djup
+}
+
+pre > code {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  white-space: inherit;
+  word-wrap: inherit;
+  font-size: 0.95em; // Något mindre kodtext
+  line-height: 1.6; // Anpassat radavstånd för kod
+}
+
+// Styling för blockquotes
+blockquote {
+  border-left: 4px solid $secondary; // Använd accentfärg
+  padding-left: 1.5rem; // Mer indrag
+  margin-left: 0;
+  margin-bottom: $paragraph-margin-bottom;
+  font-style: italic;
+  color: scale-color($body-color, $lightness: 15%); // Något ljusare än brödtext
+  font-size: 1.05rem; // Något större text för citat
+}
+
+// ==========================================================================
+// 5. Title Banner (Quarto specifikt) - Oförändrad från din version 2.2
+// ==========================================================================
+.quarto-title-banner {
+  padding: 2rem 1.5rem;
+  padding-bottom: 3rem;
+  background-color: $green-g1 !important;
+  color: $white;
+  background-image: url('logo_vit.svg');
+  background-repeat: no-repeat;
+  background-position: center top 1.5rem;
+  background-size: 200px auto;
+}
+
+.quarto-title .title,
+.quarto-title h1.title {
+  margin-top: 5.5rem;
+  font-size: 32pt; // Behålls enligt din spec
+  font-weight: $headings-font-weight;
+  font-family: $headings-font-family;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.quarto-title .subtitle,
+.quarto-title p.subtitle.lead {
+  font-style: italic;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  color: inherit;
+  margin-top: 0;
+  margin-bottom: 2.5rem; // Behålls enligt din spec för symmetri
+}
+
+// Övriga regler...
+
+.fig-note {
+  font-size: 0.9em;
+  font-style: italic;
+  color: scale-color($body-color, $lightness: 25%); // Anpassad färg
+  display: block;
+  margin-top: 0.5em;
+  text-align: center; // Centrera bildtext under figurer
+}
+
+p {
+  max-width: 600px !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  margin-bottom: $paragraph-margin-bottom; // Behåll bottenmarginal
+}
+
+// ==========================================================================
+// 7. Sidebar Navigation Styling (Förbättrad Renhet & Hierarki)
+// ==========================================================================
+#quarto-sidebar, #quarto-toc {
+  border: none;
+  box-shadow: none;
+}
+
+.sidebar-nav, #TOC>ul {
+  padding: 0.5rem 0;
+  margin: 0;
+  list-style: none;
+}
+
+// --- Gemensam bas för alla länkar i TOC ---
+.sidebar-item a,
+#TOC li a
+{
+  display: block;
+  padding: 0.5rem 1rem; // Standard padding
+  font-family: $font-family-sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: none; // Ta bort alla ramar först
+  border-left: 3px solid transparent; // 3px bred, transparent som standard
+  border-radius: 0 3px 3px 0;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-left-color 0.15s ease-in-out; // Lägg till border-color i transition
+  padding-left: calc(1rem - 3px); // Dra bort ramens bredd från vänster padding
+
+  // RADBRYTNING
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+
+  // Standardläge
+  background-color: transparent;
+  color: $green-g1;
+
+  // Hover-läge
+  &:hover {
+    background-color: $green-g5;
+    color: $primary;
+    text-decoration: none;
+  }
+
+  // Fokus-läge (för icke-aktiva länkar)
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($green-g2, 0.6);
+    z-index: 1;
+    position: relative;
+  }
+
+  // Aktivt läge (aktuell sida) - MED RAM
+  &.active {
+    font-weight: 600;
+    border-left-color: $green-g1;
+    hyphens: auto;
+    // Ingen bakgrundsfärg, ingen specifik textfärg
+  }
+
+  // *** NYTT: Fokus på Aktiv länk ***
+  // Ta bort den vanliga fokus-skuggan när länken REDAN är aktiv
+  &.active:focus {
+    outline: none; // Säkerställ ingen outline
+    box-shadow: none; // TA BORT den vanliga fokus-skuggan
+  }
+}
+
+// --- Hierarki för Nivåer (Justera padding för ramen) ---
+
+// Nivå 1
+#TOC > ul > li > a,
+.sidebar-nav > .sidebar-item > a {
+  font-weight: 600;
+  padding-left: calc(1rem - 3px);
+}
+
+// Nivå 2
+#TOC > ul > li > ul > li > a,
+.sidebar-nav > .sidebar-item > .sidebar-item-container > .sidebar-item > a {
+  font-weight: 500;
+  padding-left: calc(2rem - 3px);
+  font-size: 0.88rem;
+
+  &.active {
+     border-left-color: $green-g1;
+     font-weight: 600;
+     // Ingen bakgrundsfärg, ingen specifik textfärg
+  }
+  // Fokus på Aktiv (Nivå 2)
+  &.active:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// Nivå 3
+#TOC > ul > li > ul > li > ul > li > a,
+.sidebar-nav > .sidebar-item > .sidebar-item-container > .sidebar-item > .sidebar-item-container > .sidebar-item > a {
+  font-weight: 400;
+  padding-left: calc(3rem - 3px);
+  font-size: 0.85rem;
+
+  &.active {
+     border-left-color: $green-g1;
+     font-weight: 600;
+  }
+  // Fokus på Aktiv (Nivå 3)
+  &.active:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// Nivå 4+
+#TOC > ul > li > ul > li > ul > li > ul > li > a,
+.sidebar-nav > .sidebar-item > .sidebar-item-container > .sidebar-item > .sidebar-item-container > .sidebar-item > .sidebar-item-container > .sidebar-item > a {
+   font-weight: 400;
+   padding-left: calc(4rem - 3px);
+   font-size: 0.85rem;
+   color: scale-color($green-g1, $lightness: 15%);
+
+    &.active {
+      color: $green-g1; // Återställ standardfärg
+      border-left-color: $green-g1;
+      font-weight: 600;
+   }
+   // Fokus på Aktiv (Nivå 4+)
+   &.active:focus {
+     outline: none;
+     box-shadow: none;
+   }
+}
+
+// --- Säkerhetsåtgärder mot Bootstrap/Quarto Focus Styles ---
+// Placera dessa *efter* de andra reglerna för högre prioritet vid samma specificitet
+
+// Ta bort outline/shadow specifikt när .nav-link är aktiv och får fokus
+#quarto-sidebar .sidebar-item a.nav-link.active:focus,
+#quarto-toc #TOC li a.nav-link.active:focus,
+#TOC > ul li a.nav-link.active:focus // Mer generell TOC-variant
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+// Säkerställ att .active i sig inte får någon oönskad skugga från Bootstrap
+#quarto-sidebar .sidebar-item a.nav-link.active,
+#quarto-toc #TOC li a.nav-link.active,
+#TOC > ul li a.nav-link.active
+{
+    box-shadow: none !important; // Ta bort eventuell standard box-shadow för .active
+}
+
+
+// --- Eventuella Sektionsrubriker ---
+.sidebar-section-header {
+  font-family: $headings-font-family;
+  font-weight: 600;
+  color: scale-color($green-g1, $lightness: -10%);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 1rem 0.4rem calc(1rem - 3px); // Linjera med texten
+  margin-top: 0.8rem;
+  border: none;
+}
+
+// --- Justering för att linjera TOC ---
+#quarto-sidebar-toc-left {
+  padding-top: 4.1rem;
+}
+// ==========================================================================
+// Slut på Anpassad Sidomeny/TOC SCSS
+// ==========================================================================
+// ==========================================================================
+// Stil för att få grafer att "poppa" (Används med #| fig-class: pop-plot)
+// ==========================================================================
+.pop-plot img.figure-img,
+.pop-plot svg.figure-img {
+  // Tunn, diskret kant
+  border: 1px solid rgba($primary, 0.3);
+
+  // Enkel, mjuk skugga
+  box-shadow: 0 2px 4px rgba($black, 0.1);
+
+  // Subtil gradient (valfritt)
+  // border-image: linear-gradient(45deg, rgba($primary, 0.2), rgba($secondary, 0.2)) 1;
+
+  border-radius: 4px;                  // Lätt rundning i linje med temat :contentReference[oaicite:7]{index=7}
+  display: block;
+  margin-left: 0 !important;
+  margin-right: auto;
+  position: relative;
+
+  // Lugn hover-transition
+  transition: box-shadow 0.4s ease-in-out;
+}
+.pop-plot:hover img.figure-img,
+.pop-plot:hover svg.figure-img {
+  box-shadow: 0 3px 6px rgba($black, 0.15);  // Diskret ökning på hover
+}
+
+.quarto-float-caption {
+  max-width: 600px; 
+  /* Lägg till detta om du vill centrera bildtexten när bredden är begränsad */
+  /* margin-left: auto; */
+  /* margin-right: auto; */ 
+}
+
+h2.anchored {
+  border-bottom: none !important;
+}
+// ==========================================================================
+// Slut på "pop-plot" stil
+// ==========================================================================
+
+// ==========================================================================
+// Slut på Anpassad SCSS
+// ==========================================================================
+
+
