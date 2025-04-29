@@ -38,32 +38,27 @@ execute:
 
 ```{r}
 source(here::here('graftema.R'))
+source(here::here('paket.R'))
 ```
 
+# Rubrik 1
 
-# Vikten av ett professionellt första intryck
-
-Rapporter är ofta den primära kanalen för att kommunicera resultat, analyser och rekommendationer. Oavsett hur gediget innehållet är, kommer rapportens visuella utformning att vara det första mottagaren möter. En slarvigt utformad rapport med inkonsekvent typografi, rörig layout och undermåliga grafer riskerar att underminera trovärdigheten hos både avsändaren och själva innehållet. Omvänt signalerar en stilren, välstrukturerad och grafiskt korrekt rapport professionalism, noggrannhet och respekt för mottagarens tid. Detta första intryck kan vara avgörande för hur rapportens budskap tas emot och huruvida dess slutsatser leder till handling. Investeringen i god design är därför inte bara en fråga om estetik, utan en direkt investering i rapportens genomslagskraft och effekt.
-
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor sapien a lacus tincidunt, id pulvinar diam rhoncus. Sed vestibulum magna ac risus feugiat, vitae lacinia eros consequat. Fusce fringilla odio ac neque congue, at consequat elit vestibulum. Suspendisse sed magna mi. Praesent vitae semper sem. Maecenas quis sem vel turpis convallis varius. Ut at aliquam enim, vel convallis tortor. Duis convallis augue ac tellus tristique, et congue ipsum ultrices.
 
 ```{r}
-#| label: fig-credibility-consistent
+#| label: fig-regional-comparison
 #| fig-cap-location: bottom
 #| fig-column: screen-inset-right
 #| fig-cap: |
-#|   Kioskvältningar i Sverige som följd av rapportsläpp (1950-2024)
-#|   <br><strong><small>Notering:</strong> För att definieras som kiosk behöver man sälja korv och snus. Defintionen av "vält" är att mjukglassmaskinen har fallit till golvet. </small>
-#| fig-alt: "Massa klok alternativtext"
+#|   Ekonomisk utveckling i svenska regioner (2000-2020)
+#|   <br><strong><small>Notering:</strong> Utvecklingen mäts genom ett sammandvigt index av flera ekonomiska indikatorer.</small>
+#| fig-alt: "Linjediagram som visar ekonomisk utveckling i svenska regioner från 2000 till 2020"
 #| fig-align: center
 #| fig-width: 8
 #| fig-asp: 0.75
 #| fig-format: svg
 #| class: pop-plot
-library(ggplot2)
-library(dplyr)
-library(tidyverse)
-library(ggrepel)
-library(ggplot2)
+
 # Skapa exempeldata
 set.seed(123)
 # 10 regioner plus Riket (Sveriges faktiska regioner)
@@ -102,10 +97,8 @@ highlight_regions <- c("Halland", "Riket")
 # Använd konsekvent färgschema från halland_colors
 # Halland får alltid den mörka grönblåa färgen
 # Riket får den dammiga röda färgen
-halland_main_color <- halland_colors[1]  # "
-#005A4D" - Mörk grönblå för Halland
-riket_color <- halland_colors[3]         # "
-#B33D4A" - Dammig röd/rost för Riket
+halland_main_color <- halland_colors[1]  # "#005A4D" - Mörk grönblå för Halland
+riket_color <- halland_colors[3]         # "#B33D4A" - Dammig röd/rost för Riket
 highlight_colors <- c(halland_main_color, riket_color)
 names(highlight_colors) <- highlight_regions
 # Bearbeta data för att förenkla plottningen
@@ -128,24 +121,24 @@ ggplot(data, aes(x = year, y = value, group = region)) +
   theme_halland() +
   theme(plot.margin = margin(r = 60, l = 10, b = 10, t = 10, unit = "pt"),
         legend.position = "none") +
-  labs(title = "Kioskvältningarna har ökat i Halland",
+  labs(title = "Ekonomisk utveckling i Halland",
        subtitle = "Jämförelse mellan Halland, Riket och övriga regioner",
-       caption = "Källa: Exempeldata")
+       caption = "Källa: SCB och regionala data")
 
 ```
 
-## Grafisk korrekthet: Nyckeln till förståelse
+## Rubrik 2
 
-Utöver den övergripande layouten är kvaliteten på de enskilda graferna och visualiseringarna avgörande. "Grafisk korrekthet" handlar om att välja rätt diagramtyp för datan, använda tydliga och informativa axlar och etiketter, undvika vilseledande skalor och säkerställa att färg och form används på ett sätt som underlättar tolkning snarare än försvårar den. En felaktigt vald graf (t.ex. en plottrig cirkeldiagram för att jämföra många små delar) eller en graf med otydliga axlar kan leda till missförstånd och felaktiga slutsatser, även om den underliggande datan är korrekt. En välgjord visualisering, å andra sidan, kan på ett ögonblick förmedla komplexa samband och trender som skulle vara svåra att urskilja i en tabell eller löpande text. Dålig grafisk design leder ofta till att läsaren tappar intresset eller feltolkar informationen, medan god grafisk design fångar uppmärksamheten och leder till snabbare och mer korrekt förståelse.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor sapien a lacus tincidunt, id pulvinar diam rhoncus. Sed vestibulum magna ac risus feugiat, vitae lacinia eros consequat. Fusce fringilla odio ac neque congue, at consequat elit vestibulum. Suspendisse sed magna mi. Praesent vitae semper sem. Maecenas quis sem vel turpis convallis varius. Ut at aliquam enim, vel convallis tortor. Duis convallis augue ac tellus tristique, et congue ipsum ultrices.
 
 ```{r}
-#| label: fig-kiosk-valting1
+#| label: fig-regional-comparison2
 #| fig-cap-location: bottom
 #| fig-column: screen-inset-right
 #| fig-cap: |
-#|   Svenska regioner med lägst & högst antal kioskvältningar efter rapportsläpp
-#|   <br><strong><small>Notering:</strong> För att definieras som kiosk behöver man sälja korv och snus. Defintionen av "vält" är att mjölkglassmaskinen har fallit till golvet.</small>
-#| fig-alt: "Ett stapeldiagram som visar svenska regioner med lägst och högst antal kioskvältningar efter rapportsläpp, med Halland och Blekinge särskilt framhävda"
+#|   Svenska regioner med lägst & högst ekonomisk tillväxt
+#|   <br><strong><small>Notering:</strong> Tillväxten mäts som procentuell förändring i BRP per capita under perioden 2010-2020.</small>
+#| fig-alt: "Ett stapeldiagram som visar svenska regioner med lägst och högst ekonomisk tillväxt, med Halland och Blekinge särskilt framhävda"
 #| fig-align: center
 #| fig-width: 8
 #| fig-asp: 0.75
@@ -154,17 +147,17 @@ Utöver den övergripande layouten är kvaliteten på de enskilda graferna och v
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
-# Skapa data för kioskvältningar
-kiosk_data <- tibble(
+# Skapa data för ekonomisk tillväxt
+ekonomi_data <- tibble(
   region = c("Jämtland", "Dalarna", "Blekinge", 
              "Västerbotten", "Kronoberg", "Västmanland",
              "Värmland", "Stockholm", "Skåne", 
              "Västra Götaland", "Halland"),
   
-  valtningar = c(1.2, 1.8, 2.3, 
-                 3.9, 4.2, 5.0,
-                 8.7, 9.2, 10.6, 
-                 12.3, 15.8),
+  tillvaxt = c(1.2, 1.8, 2.3, 
+               3.9, 4.2, 5.0,
+               8.7, 9.2, 10.6, 
+               12.3, 15.8),
   
   # Ny kategori där vi bara fokuserar på Halland och Blekinge
   kategori = case_when(
@@ -173,8 +166,8 @@ kiosk_data <- tibble(
     TRUE ~ "Övriga regioner"
   )
 )
-# Ordna regionerna efter antal kioskvältningar
-kiosk_data$region <- factor(kiosk_data$region, levels = kiosk_data$region)
+# Ordna regionerna efter ekonomisk tillväxt
+ekonomi_data$region <- factor(ekonomi_data$region, levels = ekonomi_data$region)
 
 # Definiera färger från halland_colors
 halland_color <- halland_colors[1]   # Mörkgrön färg för Halland
@@ -182,21 +175,21 @@ blekinge_color <- halland_colors[3]  # Dammig röd/rost färg för Blekinge
 other_color <- "grey70"              # Grå för övriga regioner
 
 # Skapa vektorerna för färgsättning av staplar och text
-text_colors <- ifelse(kiosk_data$kategori == "Övriga regioner", "grey50", "black")
+text_colors <- ifelse(ekonomi_data$kategori == "Övriga regioner", "grey50", "black")
 bar_colors <- c("Halland" = halland_color, "Blekinge" = blekinge_color, "Övriga regioner" = other_color)
 
 # Skapa grafen
-ggplot(kiosk_data, aes(x = region, y = valtningar, fill = kategori)) +
+ggplot(ekonomi_data, aes(x = region, y = tillvaxt, fill = kategori)) +
   geom_col() +
   coord_flip() +
   scale_fill_manual(values = bar_colors) +
   # Använd text_colors för att differentiera etiketter
-  geom_text(aes(label = paste0(valtningar), color = kategori), 
+  geom_text(aes(label = paste0(tillvaxt), color = kategori), 
             hjust = -0.2, size = 3.5) +
   scale_color_manual(values = c("Halland" = "black", "Blekinge" = "black", "Övriga regioner" = "grey50")) +
   labs(
-    title = "Svenska regioner med lägst & högst antal kioskvältningar",
-    subtitle = "Antal kioskvältningar per 100 000 invånare efter regionala rapportsläpp",
+    title = "Svenska regioner med lägst & högst ekonomisk tillväxt",
+    subtitle = "Procentuell tillväxt i BRP per capita 2010-2020",
     x = NULL,
     y = NULL
   ) +
@@ -207,7 +200,7 @@ ggplot(kiosk_data, aes(x = region, y = valtningar, fill = kategori)) +
     # Vänsterjustera etiketter på y-axeln
     axis.text.y = element_text(
       size = 10,
-      color = ifelse(levels(kiosk_data$region) %in% c("Halland", "Blekinge"), "black", "grey50")
+      color = ifelse(levels(ekonomi_data$region) %in% c("Halland", "Blekinge"), "black", "grey50")
     ),
     axis.text.x = element_blank(),  # Ta bort x-axelns text
     axis.ticks.x = element_blank(),  # Ta bort x-axelns ticks
@@ -218,26 +211,21 @@ ggplot(kiosk_data, aes(x = region, y = valtningar, fill = kategori)) +
     plot.margin = margin(t = 10, r = 20, b = 15, l = 10)
   ) +
   # Lägg till en fotnot med information
-  labs(caption = "Källa: Institutet för Kioskvältning & Rapportdesign")
+  labs(caption = "Källa: Statistiska Centralbyrån (SCB)")
 ```
 
-## Kausalitet mellan produktion och vältning?
+## Rubrik 3
 
-Kausalitet mellan produktion och vältning?
-Analysen visar ett tydligt samband mellan regionernas genomsnittliga R-kodproduktion och antalet kioskvältningar. Regioner med högre kodproduktion, särskilt Halland, uppvisar signifikant fler kioskvältningar per 100 000 invånare. Detta kan förklaras av den högre stressnivån hos programmerare i regioner med intensiv kodproduktion, vilket leder till mer impulsiva kioskbesök och därmed ökad risk för vältningar.
-
-Intressant nog avviker Blekinge från detta mönster. Trots relativt hög kodproduktion uppvisar regionen få kioskvältningar, vilket kan förklaras av den unika "Blekingemodellen" där programmerare uppmuntras till regelbundna pauser och ergonomiska kioskbesök.
-
-Studien kan dock inte utesluta omvänd kausalitet - att just kioskvältningar inspirerar till mer kodproduktion genom det välkända fenomenet "debuggningshunger" som ofta drabbar programmerare efter oväntade händelser i vardagen. Ytterligare studier behövs för att klargöra orsaksriktningen i detta fascinerande samband.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor sapien a lacus tincidunt, id pulvinar diam rhoncus. Sed vestibulum magna ac risus feugiat, vitae lacinia eros consequat. Fusce fringilla odio ac neque congue, at consequat elit vestibulum. Suspendisse sed magna mi. Praesent vitae semper sem. Maecenas quis sem vel turpis convallis varius. Ut at aliquam enim, vel convallis tortor. Duis convallis augue ac tellus tristique, et congue ipsum ultrices.
 
 ```{r}
-#| label: fig-kod-valtningar
+#| label: fig-innovation-tillvaxt
 #| fig-cap-location: bottom
 #| fig-column: screen-inset-right
 #| fig-cap: |
-#|   Samband mellan R-kodproduktion och kioskvältningar i svenska regioner
-#|   <br><strong><small>Notering:</strong> Regionens kodproduktion mäts som genomsnittligt antal tecken per R-script.</small>
-#| fig-alt: "En scatterplot som visar sambandet mellan R-kodproduktion och kioskvältningar i svenska regioner, med Halland och Blekinge särskilt framhävda"
+#|   Samband mellan innovationsindex och ekonomisk tillväxt i svenska regioner
+#|   <br><strong><small>Notering:</strong> Innovationsindex är ett sammansatt mått på patent, FoU-investeringar och kunskapsintensiva företag.</small>
+#| fig-alt: "En scatterplot som visar sambandet mellan innovationsindex och ekonomisk tillväxt i svenska regioner, med Halland och Blekinge särskilt framhävda"
 #| fig-align: center
 #| fig-width: 8
 #| fig-asp: 0.75
@@ -248,7 +236,7 @@ library(ggplot2)
 library(dplyr)
 library(ggrepel)  # För att använda geom_text_repel
 
-# Skapa hittepådata för kodproduktion och kioskvältningar
+# Skapa data för innovationsindex och ekonomisk tillväxt
 set.seed(123)  # För reproducerbarhet
 scatter_data <- tibble(
   region = c("Jämtland", "Dalarna", "Blekinge", 
@@ -256,15 +244,15 @@ scatter_data <- tibble(
              "Värmland", "Stockholm", "Skåne", 
              "Västra Götaland", "Halland"),
   
-  kod_produktion = c(15000, 18000, 32000,  # Lägre värden
-                    22000, 24000, 26000,   # Medelvärden
-                    28000, 34000, 36000,   # Högre värden
-                    38000, 42000),         # Högst värden
+  innovationsindex = c(15000, 18000, 32000,  # Lägre värden
+                       22000, 24000, 26000,   # Medelvärden
+                       28000, 34000, 36000,   # Högre värden
+                       38000, 42000),         # Högst värden
   
-  valtningar = c(1.2, 1.8, 2.3, 
-                 3.9, 4.2, 5.0,
-                 8.7, 9.2, 10.6, 
-                 12.3, 15.8),
+  tillvaxt = c(1.2, 1.8, 2.3, 
+               3.9, 4.2, 5.0,
+               8.7, 9.2, 10.6, 
+               12.3, 15.8),
   
   # Kategori för att markera Halland och Blekinge
   kategori = case_when(
@@ -274,20 +262,20 @@ scatter_data <- tibble(
   )
 )
 
-# Beräkna riksgenomsnitt för kod_produktion och valtningar
-riks_kod_produktion <- mean(scatter_data$kod_produktion)
-riks_valtningar <- mean(scatter_data$valtningar)
+# Beräkna riksgenomsnitt för innovationsindex och tillväxt
+riks_innovationsindex <- mean(scatter_data$innovationsindex)
+riks_tillvaxt <- mean(scatter_data$tillvaxt)
 
-# Definiera färger från halland_colors (antar samma färger som tidigare)
+# Definiera färger från halland_colors
 halland_color <- halland_colors[1]   # Mörkgrön färg för Halland
 blekinge_color <- halland_colors[3]  # Dammig röd/rost färg för Blekinge
 other_color <- "grey70"              # Grå för övriga regioner
 
 # Skapa scatterplot
-ggplot(scatter_data, aes(x = kod_produktion, y = valtningar)) +
+ggplot(scatter_data, aes(x = innovationsindex, y = tillvaxt)) +
   # Lägg till genomsnittslinjer
-  geom_hline(yintercept = riks_valtningar, linetype = "dashed", color = "grey40", alpha = 0.7) +
-  geom_vline(xintercept = riks_kod_produktion, linetype = "dashed", color = "grey40", alpha = 0.7) +
+  geom_hline(yintercept = riks_tillvaxt, linetype = "dashed", color = "grey40", alpha = 0.7) +
+  geom_vline(xintercept = riks_innovationsindex, linetype = "dashed", color = "grey40", alpha = 0.7) +
   
   # Lägg till punkter med olika storlek baserat på kategori
   geom_point(aes(color = kategori, size = kategori)) +
@@ -309,16 +297,16 @@ ggplot(scatter_data, aes(x = kod_produktion, y = valtningar)) +
   ) +
   
   # Annotera riksgenomsnittet
-  annotate("text", x = riks_kod_produktion + 2000, y = riks_valtningar - 1, 
+  annotate("text", x = riks_innovationsindex + 2000, y = riks_tillvaxt - 1, 
            label = "Riksgenomsnitt", size = 3, color = "grey40") +
   
   # Lägg till titel och axlar
   labs(
-    title = "Samband mellan R-kodproduktion och kioskvältningar",
-    subtitle = "Antal kodtecken i R jämfört med kioskvältningar per 100 000 invånare",
-    x = "R-kodproduktion (antal tecken)",
-    y = "Kioskvältningar per 100 000 invånare",
-    caption = "Källa: Institutet för Kioskvältning & Rapportdesign"
+    title = "Samband mellan innovationsindex och ekonomisk tillväxt",
+    subtitle = "Innovationsindex jämfört med procentuell tillväxt i BRP per capita",
+    x = "Innovationsindex",
+    y = "Ekonomisk tillväxt (%)",
+    caption = "Källa: SCB och Tillväxtverket (2020)"
   ) +
   
   # Använd tema från tidigare (theme_halland)
@@ -332,4 +320,3 @@ ggplot(scatter_data, aes(x = kod_produktion, y = valtningar)) +
     plot.margin = margin(t = 10, r = 20, b = 15, l = 10)
   )
 ```
-
